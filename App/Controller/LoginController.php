@@ -34,6 +34,8 @@ class LoginController extends Controller {
         if($userFind)
         {
             $_SESSION['user_id'] = $userFind['id'];
+            $_SESSION['user_role'] = $userFind['role'];
+
             $_SESSION['msg'] = [
                 'msg' => 'خوش آمدید ',
                 'status' => true,

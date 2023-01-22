@@ -20,9 +20,14 @@ class UserController extends Controller{
     public function edit()
     {
         if (isset($_SESSION['user_id'])) {
-            $id = $_SESSION['user_id'];
-            $user =  $this->user->read($id);
-            return view('userpage.useredit', $user);
+
+            $id = $this->request->params['id'];
+            $data = [
+                'user' => $this->user->read($id),
+                'role' => ['admin','user'],
+            ];
+            // $user =  $this->user->read($id);
+            return view('userpage.useredit', $data);
         }
         return header("location:".echoRoute('login'));
     }

@@ -54,7 +54,7 @@ class MysqlModel extends BaseModel{
     public function read($id)
     {
         
-        $sql = "SELECT id, name, password FROM $this->table WHERE ID = :id";
+        $sql = "SELECT id, name, password,role FROM $this->table WHERE id = :id";
         $stmt= $this->connection->prepare($sql);
         $stmt->execute(['id'=>$id]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
